@@ -1,0 +1,13 @@
+{%extends 'partials/base.html'%}
+{%load crispy_forms_tags%}
+{%block title%}Book a ticket{%endblock%}
+{%block content%}
+<div class="container">
+    <h1>Book Ticket for {{ seat.event.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Book</button>
+    </form>
+</div>
+{%block content%}

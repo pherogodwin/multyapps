@@ -1,0 +1,12 @@
+{%extends 'partials/base.html'%}
+{%load crispy_forms_tags%}
+{%block title%}Confirmation{%endblock%}
+{%block content%}
+<div class="container">
+    <h1>Booking Confirmation</h1>
+    <p>Thank you, {{ booking.user_name }}! Your ticket for {{ booking.event.name }} has been booked.</p>
+    <p>Seat Number: {{ booking.seat.seat_number }}</p>
+    <p>A confirmation email has been sent to {{ booking.user_email }}.</p>
+</div>
+
+{%block content%}

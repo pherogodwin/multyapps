@@ -1,0 +1,13 @@
+{%extends 'partials/base.html'%}
+{%load crispy_forms_tags%}
+{%block title%}Add task{%endblock%}
+{%block content%}
+<div class="container">
+    {% for event in events %}
+    <h2><a href="{% url 'events:event_detail' event.id %}">{{ event.name }}</a></h2>
+    <p>{{ event.date }} - {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+{% endfor %}
+</div>
+
+{%endblock%}

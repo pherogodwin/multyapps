@@ -1,0 +1,88 @@
+{%extends 'partials/base.html'%}
+{%load crispy_forms_tags%}
+{%load static%}
+
+{%block title%}Weather App{%endblock%}
+{%block content%}
+<style>
+    body {
+        background: url("{%static 'media/wer.jpg'%}") no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .form-control {
+        max-width: 600px;
+        padding: 15px 32px;
+        border-radius: 15px;
+    }
+
+    .btn {
+        padding: 12px 32px;
+        border-radius: 15px;
+        margin-top: 40px;
+    }
+
+    .container2 {
+        margin-top: 10vh;
+    }
+
+    h1 {
+        font-weight: 700;
+        font-size: 4em;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 1.4em;
+    }
+
+    section {
+        margin-top: 3em;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .sect {
+        padding: 5px 20px;
+        background: #ffffffa4;
+        border-radius: 15px;
+    }
+    .wet {
+        font-size: 1em;
+        font-weight: 500;
+
+    }
+    h4 {
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+</style>
+
+
+<section>
+    <div class="container2">
+        <h1>Weather Forecast</h1>
+        <p>Enter a city or state to get it's weather data</p>
+        <form method="get">
+            <input type="text" class="form-control" name="city_or_zip" placeholder="Enter city or zip code">
+            <button type="submit" class="btn btn-primary">Get Weather</button>
+        </form>
+    </div>
+    {% if weather_data %}
+    <div class="container2 sect p-5 d-flex flex-column me-5 justify-content-center gap-3 align-items-center">
+        
+        <h4>Weather in {{ weather_data.name }}</h4>
+        <p class="wet">Temperature: {{ weather_data.main.temp }}°C</p>
+        <p class="wet">Humidity: {{ weather_data.main.humidity }}%</p>
+        <p class="wet">Wind Speed: {{ weather_data.wind.speed }} m/s</p>
+        
+    </div>
+    {% endif %}
+</section>
+
+
+
+{%endblock%}

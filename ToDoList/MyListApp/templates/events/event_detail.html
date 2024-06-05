@@ -1,0 +1,17 @@
+{%extends 'partials/base.html'%}
+{%load crispy_forms_tags%}
+{%block title%}Detail{%endblock%}
+{%block content%}
+<div class="container">
+    <h1>{{ event.name }}</h1>
+    <p>{{ event.date }} - {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+
+    <h2>Available Seats</h2>
+    <ul>
+        {% for seat in seats %}
+        <li><a href="{% url 'events:book_ticket' seat.id %}">{{ seat.seat_number }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{%endblock%}

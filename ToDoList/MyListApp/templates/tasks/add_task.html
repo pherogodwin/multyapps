@@ -1,0 +1,36 @@
+{%extends 'partials/base.html'%}
+{%load crispy_forms_tags%}
+{%block title%}Add task{%endblock%}
+{%block content%}
+<style>
+    .bby {
+    padding: 10px 23px;
+    border-radius: 10px;
+
+  }
+</style>
+
+<h4>Add task</h4>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="text-center">
+            <button class="btn bby btn-primary w-75" type="submit">Add Task</button>
+
+        </div>
+    </form>
+</div>
+
+<!-- <ul>
+    {% for task in tasks %}
+    <li>
+        <strong>{{ task.title }}</strong> - {{ task.get_priority_display }} - due by {{ task.due_date }}
+        {% if not task.completed %}
+        <a href="{% url 'tasks:complete_task' task.id %}">Complete</a>
+        {% endif %}
+        <a href="{% url 'tasks:delete_task' task.id %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul> -->
+{%endblock%}
